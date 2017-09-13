@@ -14,7 +14,6 @@ export default class Home extends React.Component {
   }
 
   setSites(sites) {
-    console.log(sites, 'FUCK');
     this.setState({ sites });
   }
 
