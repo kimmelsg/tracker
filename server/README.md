@@ -1,4 +1,4 @@
-## Tracker client
+## Tracker server
 
 ## Install
 
