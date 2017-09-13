@@ -10,9 +10,9 @@ import Session from './views/session';
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/site/:site" component={Site} />
-      <Route path="/session/:id" component={Session} />
+      <Route path="/view" exact component={Home} />
+      <Route path="/view/site/:site" component={Site} />
+      <Route path="/view/session/:id" component={Session} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

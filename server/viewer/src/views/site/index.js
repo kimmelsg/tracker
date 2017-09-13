@@ -33,7 +33,7 @@ export default class Sites extends React.Component {
         <ul>
           {users.map(user => (
             <li key={user}>
-              <Link to={`/session/${user}`}>{user}</Link>
+              <Link to={`/view/session/${user}`}>{user}</Link>
             </li>
           ))}
         </ul>

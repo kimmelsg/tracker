@@ -30,7 +30,7 @@ export default class Home extends React.Component {
         <ul>
           {sites.map(site => (
             <li key={site}>
-              <Link to={`/site/${encodeURIComponent(site)}`}>{site}</Link>
+              <Link to={`/view/site/${encodeURIComponent(site)}`}>{site}</Link>
             </li>
           ))}
         </ul>

@@ -21,7 +21,7 @@ Tracker('http://trackerserver.com');
 Or via cdn:
 
 ```js
-<script type="text/javascript" src="https://unpkg.com/@kimmel/tracker-client@0.0.1/umd/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@kimmel/tracker-client@latest/umd/index.js"></script>
 
 <script type="text/javascript">
   TrackerClient.default('http://localhost:8888');
