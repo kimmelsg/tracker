@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
-import socket from './socket';
+import React from 'react';
+import socket from '../../socket';
 import { Link } from 'react-router-dom';
 
-class App extends Component {
+export default class Home extends React.Component {
   constructor() {
     super();
     this.state = {};
@@ -11,6 +10,10 @@ class App extends Component {
 
   componentDidMount() {
     socket.on('sites', sites => this.setState({ sites }));
+  }
+
+  componentWillUnmount() {
+    socket.removeListener('sites');
   }
   render() {
     let { sites = [] } = this.state;
@@ -22,7 +25,7 @@ class App extends Component {
         <ul>
           {sites.map(site => (
             <li key={site}>
-              <Link to={`/${site}`}>{site}</Link>
+              <Link to={`/site/${encodeURIComponent(site)}`}>{site}</Link>
             </li>
           ))}
         </ul>
@@ -30,5 +33,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

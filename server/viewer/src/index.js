@@ -1,11 +1,19 @@
+import './app.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import Home from './views/home';
+import Site from './views/site';
+import Session from './views/session';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/site/:site" component={Site} />
+      <Route path="/session/:id" component={Session} />
+    </Switch>
   </BrowserRouter>,
   document.getElementById('root')
 );

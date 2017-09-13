@@ -23,6 +23,18 @@ body {
   font-size: large;
 }
 
+.viewer {
+  position: absolute;
+  border: none;
+}
+
+.mouse {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: black;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
