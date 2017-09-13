@@ -6,6 +6,7 @@ export default class Sites extends React.Component {
   constructor() {
     super();
     this.state = {};
+    this.setUsers = this.setUsers.bind(this);
   }
 
   componentDidMount() {
@@ -13,10 +14,14 @@ export default class Sites extends React.Component {
     let url = decodeURIComponent(match.params.site);
     socket.emit('url', url);
 
-    socket.on('users', users => this.setState({ users }));
+    socket.on('users', this.setUsers);
+  }
+
+  setUsers(users) {
+    this.setState({ users });
   }
   componentWillUnmount() {
-    socket.removeListener('users');
+    socket.removeListener('users', this.setUsers);
   }
   render() {
     let { users = [] } = this.state;

@@ -6,14 +6,20 @@ export default class Home extends React.Component {
   constructor() {
     super();
     this.state = {};
+    this.setSites = this.setSites.bind(this);
   }
 
   componentDidMount() {
-    socket.on('sites', sites => this.setState({ sites }));
+    socket.on('sites', this.setSites);
+  }
+
+  setSites(sites) {
+    console.log(sites, 'FUCK');
+    this.setState({ sites });
   }
 
   componentWillUnmount() {
-    socket.removeListener('sites');
+    socket.removeListener('sites', this.setSites);
   }
   render() {
     let { sites = [] } = this.state;
