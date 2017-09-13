@@ -23,4 +23,11 @@ server.listen(8888);
 
 ```
 
+## Access
+
+There is no user auth currently. Block access to `/view/**` using nginx or whatever webserver you use to the public.
+
+
+## Next Steps
+
 Now, send all connections to the public url you have setup, using [the client](../client)
