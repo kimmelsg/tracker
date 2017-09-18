@@ -6,8 +6,9 @@ export default class Session extends React.Component {
   constructor() {
     super();
     this.state = {};
-    this.setData = this.setData.bind(this);
+    this.scroll = this.scroll.bind(this);
     this.setUrl = this.setUrl.bind(this);
+    this.setData = this.setData.bind(this);
   }
 
   componentDidMount() {
@@ -15,12 +16,18 @@ export default class Session extends React.Component {
     socket.emit('session', match.params.id);
 
     socket.on('data', this.setData);
+    socket.on('scroll', this.scroll);
     socket.on('pagechange', this.setUrl);
   }
 
   componentWillUnmount() {
     socket.removeListener('data', this.setData);
+    socket.removeListener('scroll', this.scroll);
     socket.removeListener('pagechange', this.setUrl);
+  }
+
+  scroll({ scrollY }) {
+    this.iframe.contentWindow.postMessage({ scrollY: scrollY }, '*');
   }
 
   setData(data) {
@@ -37,6 +44,7 @@ export default class Session extends React.Component {
       <div>
         {url ? (
           <iframe
+            ref={ref => (this.iframe = ref)}
             src={url}
             className="viewer"
             title="View"

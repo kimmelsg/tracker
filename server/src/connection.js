@@ -46,5 +46,10 @@ module.exports = ({ publicURL, io }) => {
       socket.info = { ...socket.info, width, height };
       io.sockets.in(`session-${socket.id}`).emit('data', socket.info);
     });
+
+    socket.on('scroll', ({ scrollY }) => {
+      socket.info = { ...socket.info, scrollY };
+      io.sockets.in(`session-${socket.id}`).emit('scroll', socket.info);
+    });
   });
 };
