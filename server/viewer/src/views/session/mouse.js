@@ -12,8 +12,8 @@ export default class Mouse extends React.Component {
     socket.on('mouse', this.setMouse);
   }
 
-  setMouse(mouse) {
-    this.setState({ mouse });
+  setMouse({ mouse, scrollY }) {
+    this.setState({ mouse, scrollY });
   }
 
   componentWillUnmount() {
@@ -21,7 +21,13 @@ export default class Mouse extends React.Component {
   }
 
   render() {
+    let { scrollY = 0 } = this.state;
     let mouse = this.state.mouse || this.props.mouse || {};
-    return <div className="mouse" style={{ left: mouse.x, top: mouse.y }} />;
+    return (
+      <div
+        className="mouse"
+        style={{ left: mouse.x, top: (mouse.y || 0) - scrollY }}
+      />
+    );
   }
 }

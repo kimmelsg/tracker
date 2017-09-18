@@ -34,7 +34,7 @@ module.exports = ({ publicURL, io }) => {
 
     socket.on('mousemove', mouse => {
       socket.info = { ...socket.info, mouse };
-      io.sockets.in(`session-${socket.id}`).emit('mouse', mouse);
+      io.sockets.in(`session-${socket.id}`).emit('mouse', socket.info);
     });
 
     socket.on('pagechange', url => {
