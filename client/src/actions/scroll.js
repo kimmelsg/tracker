@@ -7,6 +7,6 @@ export default socket => {
       socket.emit('scroll', {
         scrollY: window.scrollY,
       });
-    }, 200)
+    }, 100)
   );
 };
